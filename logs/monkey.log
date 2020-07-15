@@ -1,0 +1,15 @@
+2020-07-15T17:07:49.897+0800	INFO	monkeyClient/monkeyClient.go:36	log init ok
+2020-07-15T17:07:49.898+0800	INFO	monkeyClient/monkeyClient.go:45	config init ok
+2020-07-15T17:07:49.898+0800	INFO	monkeyClient/monkeyClient.go:50	host ColleData start
+2020-07-15T17:07:49.899+0800	INFO	logUtils/logs.go:12	Host.Update time= [1594804069]
+2020-07-15T17:08:55.838+0800	INFO	monkeyClient/monkeyClient.go:36	log init ok
+2020-07-15T17:08:55.840+0800	INFO	monkeyClient/monkeyClient.go:45	config init ok
+2020-07-15T17:08:55.840+0800	INFO	monkeyClient/monkeyClient.go:50	host ColleData start
+2020-07-15T17:08:55.840+0800	INFO	logUtils/logs.go:12	Host.Update time= 1594804135
+2020-07-15T17:40:46.098+0800	INFO	monkeyClient/monkeyClient.go:36	log init ok
+2020-07-15T17:40:46.100+0800	INFO	monkeyClient/monkeyClient.go:45	config init ok
+2020-07-15T17:40:46.100+0800	INFO	monkeyClient/monkeyClient.go:50	host ColleData start
+2020-07-15T17:40:46.101+0800	INFO	logUtils/logs.go:12	Host.Update time= 1594806046
+2020-07-15T17:40:46.101+0800	INFO	logUtils/logs.go:15	get hostname start
+2020-07-15T17:40:46.101+0800	INFO	logUtils/logs.go:15	get ip start
+2020-07-15T17:40:46.101+0800	INFO	logUtils/logs.go:15	GetCpu start
