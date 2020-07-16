@@ -2,6 +2,7 @@ package osInfoFunc
 
 import (
 	"bufio"
+	"fmt"
 	"monkeyClient/logUtils"
 	"monkeyClient/procFile"
 	"os"
@@ -21,8 +22,8 @@ func GetCpu() osCpu {
 	var a SecondData
 	var b osCpu
 	a.Update()
-	b.Used = UsedCpuTime
-	b.Idle = IdleCpuTime
+	b.Used = Decimal(UsedCpuTime)
+	b.Idle = Decimal(IdleCpuTime)
 	return b
 }
 func readProc() *SecondData {
@@ -61,5 +62,10 @@ func calculation(sData,eData SecondData) {
 }
 
 
+func Decimal(value float64) float64  {
+
+	value, _ = strconv.ParseFloat(fmt.Sprintf("%.2f", value), 64)
+	return value
+}
 
 //cpu  565376889 2949 155934444 9083080022 387102381 0 9628079 0 0 0

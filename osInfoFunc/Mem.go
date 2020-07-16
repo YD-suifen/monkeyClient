@@ -44,11 +44,12 @@ func GetMem() osMem {
 func (c *osMem) Get()  {
 
 	total,used,free := memInfo()
+	logUtils.Debugf("mem get %v %v %v",total,used,free)
 	pmemFree := float64(free) * 100.0 / float64(total)
-	pmemUsed := float64(used) * 100.0 / float64(used)
-	c.Used = pmemUsed
-	c.Total = float64(total) / (1024 * 2)
-	c.Free = pmemFree
+	pmemUsed := float64(used) * 100.0 / float64(total)
+	c.Used = Decimal(pmemUsed)
+	c.Total = Decimal(float64(total) / (1024 * 1024))
+	c.Free = Decimal(pmemFree)
 
 }
 
