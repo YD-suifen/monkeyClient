@@ -12,53 +12,59 @@ import (
 
 var IdleCpuTime float64
 var UsedCpuTime float64
+var TotalCpuTime float64
 
 type SecondData struct {
-	TotalCpuTime float64
 	IdleCpuTime float64
+	UsedCpuTime float64
 }
+
 func GetCpu() osCpu {
 	logUtils.Info("GetCpu start")
 	var a SecondData
 	var b osCpu
 	a.Update()
-	b.Used = Decimal(UsedCpuTime)
-	b.Idle = Decimal(IdleCpuTime)
+	b.Used = Decimal(a.UsedCpuTime)
+	b.Idle = Decimal(a.IdleCpuTime)
 	return b
 }
-func readProc() *SecondData {
+
+func (c *SecondData) Update() {
+	bI := IdleCpuTime
+	bT := TotalCpuTime
+	nowTotal, nowIdle := readProc()
+	U,I := calculation(nowTotal,nowIdle,bT,bI)
+	c.UsedCpuTime = U
+	c.IdleCpuTime = I
+}
+
+func readProc() (float64,float64) {
 	file, _ := os.Open(procFile.ReadProc("cpu"))
 	defer file.Close()
 
 	r := bufio.NewReader(file)
 	data, _, _ := r.ReadLine()
 	dataD := strings.Fields(string(data))
-	sorData := &SecondData{}
+
+	TotalCpuTime = 0.0
+	IdleCpuTime = 0.0
 
 	for _, v := range dataD[1:]{
 		iDate,_ := strconv.Atoi(v)
-		sorData.TotalCpuTime += float64(iDate)
+		TotalCpuTime += float64(iDate)
 	}
 	idles,_ := strconv.Atoi(dataD[4])
-	sorData.IdleCpuTime = float64(idles)
-	return sorData
+	IdleCpuTime = float64(idles)
+	return TotalCpuTime,IdleCpuTime
 }
-func (c *SecondData) Update() {
-	if c.TotalCpuTime == 0{
-		*c = SecondData{}
-	}
-	var beData SecondData
-	beData.TotalCpuTime = c.TotalCpuTime
-	beData.IdleCpuTime = c.IdleCpuTime
-	nowData := readProc()
-	calculation(*nowData,beData)
-}
-func calculation(sData,eData SecondData) {
-	totalTime := eData.TotalCpuTime - sData.TotalCpuTime
-	totalIdleTime := eData.IdleCpuTime - sData.IdleCpuTime
+
+func calculation(nT, nI, bT, bI float64) (float64,float64){
+	totalTime :=  nT - bT
+	totalIdleTime := nI - bI
 	noIdeleTime := totalTime - totalIdleTime
-	UsedCpuTime = noIdeleTime * 100 / totalTime
-	IdleCpuTime = float64(100) - UsedCpuTime
+	UsedCpu := noIdeleTime * 100 / totalTime
+	IdleCpu := float64(100) - UsedCpu
+	return UsedCpu,IdleCpu
 }
 
 
