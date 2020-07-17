@@ -9,18 +9,27 @@ import (
 )
 
 var AtomicClockUnix int64
-//func init()  {
-//	AtomicClockUnix = time.Now().Unix()
-//}
+var HostName string
+var PrivateIP string
+
+func Init()  {
+	AtomicClockUnix = time.Now().Unix()
+	PrivateIP = getIp()
+	HostName = getHostName()
+}
+
+
 
 
 
 func ColleData()  {
 	//bbb := logUtils.SugarLogger
+	Init()
 
 	var Host HostInfo
 	for  {
 		AtomicClockUnix = time.Now().Unix()
+		AtomicClockUnix = AtomicClockUnix - AtomicClockUnix % 60
 		logUtils.Infof("Host.Update time= %v",AtomicClockUnix)
 		Host.Update()
 		messageChan.HostNowData <- Host
@@ -32,8 +41,8 @@ func ColleData()  {
 func (c *HostInfo) Update() {
 
 	c.Times = AtomicClockUnix
-	c.HostName = getHostName()
-	c.PrivateIP = getIp()
+	c.HostName = HostName
+	c.PrivateIP = PrivateIP
 	c.Cpus = GetCpu()
 	c.Mems = GetMem()
 	c.Disks = GetDisk()

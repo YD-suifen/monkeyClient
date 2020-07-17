@@ -7,6 +7,7 @@ import (
 	"monkeyClient/logUtils"
 	"monkeyClient/osInfoFunc"
 	"monkeyClient/router"
+	"monkeyClient/server"
 	"monkeyClient/utils"
 	"os"
 )
@@ -49,6 +50,8 @@ func main() {
 
 	logUtils.SugarLogger.Info("host ColleData start")
 	go osInfoFunc.ColleData()
+
+	server.SdataDBInsert()
 
 	r := gin.Default()
 	router.RegistRouter(r)

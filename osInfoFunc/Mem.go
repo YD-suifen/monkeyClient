@@ -6,7 +6,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"monkeyClient/dao"
 	"monkeyClient/logUtils"
+	"monkeyClient/messageChan"
 	"monkeyClient/procFile"
 	"strconv"
 	"strings"
@@ -50,6 +52,15 @@ func (c *osMem) Get()  {
 	c.Used = Decimal(pmemUsed)
 	c.Total = Decimal(float64(total) / (1024 * 1024))
 	c.Free = Decimal(pmemFree)
+	var a dao.SHMemTable
+	a.HostName = HostName
+	a.PrivateIP = PrivateIP
+	a.TimeUnix = AtomicClockUnix
+	a.Used = c.Used
+	a.Total = c.Total
+	a.Free = c.Free
+	jsonData, _ := json.Marshal(a)
+	messageChan.MemInfo <- jsonData
 
 }
 

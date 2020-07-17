@@ -1,8 +1,11 @@
 package osInfoFunc
 
 import (
+	"encoding/json"
 	"github.com/shirou/gopsutil/disk"
+	"monkeyClient/dao"
 	"monkeyClient/logUtils"
+	"monkeyClient/messageChan"
 	"strings"
 )
 
@@ -22,6 +25,7 @@ func GetDisk() []osDisk {
 	diskList, _ := disk.Partitions(true)
 	var diskInfos osDisk
 	var diskInfosList []osDisk
+	var c dao.SHDiskTable
 
 	data := &DevInfo{}
 
@@ -42,11 +46,17 @@ func GetDisk() []osDisk {
 		diskInfos.Free = float64(data.PFree)
 
 		diskInfosList = append(diskInfosList,diskInfos)
-
-		//fmt.Println(data.DevName,data.PTotel,data.PUsed,data.PFree)
 		logUtils.Debugf("%v %v %v %v ",data.DevName,data.PTotel,data.PUsed,data.PFree)
 
 	}
+	jsonData, _ := json.Marshal(diskInfosList)
+	c.HostName = HostName
+	c.PrivateIP = PrivateIP
+	c.TimeUnix = AtomicClockUnix
+	c.Disk = string(jsonData)
+	jsonDataC, _ := json.Marshal(c)
+
+	messageChan.DiskInfo <- jsonDataC
 	return diskInfosList
 
 }

@@ -2,8 +2,11 @@ package osInfoFunc
 
 import (
 	"bufio"
+	"encoding/json"
 	"fmt"
+	"monkeyClient/dao"
 	"monkeyClient/logUtils"
+	"monkeyClient/messageChan"
 	"monkeyClient/procFile"
 	"os"
 	"strconv"
@@ -23,9 +26,17 @@ func GetCpu() osCpu {
 	logUtils.Info("GetCpu start")
 	var a SecondData
 	var b osCpu
+	var c dao.SHCpuTable
 	a.Update()
 	b.Used = Decimal(a.UsedCpuTime)
 	b.Idle = Decimal(a.IdleCpuTime)
+	c.UsedCpu = b.Used
+	c.IdleCpu = b.Idle
+	c.HostName = HostName
+	c.PrivateIP = PrivateIP
+	c.TimeUnix = AtomicClockUnix
+	jsonData, _ := json.Marshal(c)
+	messageChan.CpuInfo <- jsonData
 	return b
 }
 

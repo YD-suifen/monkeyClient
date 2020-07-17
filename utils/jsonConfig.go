@@ -9,6 +9,10 @@ import (
 type Configs struct{
 	Master string `json:"master"`
 	Port int `json:"port"`
+	DbHost string `json:"dbHost"`
+	DbUser string `json:"dbUser"`
+	DbName string `json:"dbName"`
+	DbPass string `json:"dbPass"`
 }
 
 type JsonStruct struct {

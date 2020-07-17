@@ -3,8 +3,11 @@ package osInfoFunc
 import (
 	"bufio"
 	"bytes"
+	"encoding/json"
 	"io/ioutil"
+	"monkeyClient/dao"
 	"monkeyClient/logUtils"
+	"monkeyClient/messageChan"
 	"monkeyClient/procFile"
 	"strings"
 )
@@ -60,4 +63,12 @@ func (c *osNetConn) Get()  {
 	}
 	c.AllConn = tcpnet.TCP_TOTAL
 	c.Established = tcpnet.TCP_ESTABLISHED
+	var a dao.SHTcpNetTable
+	a.HostName = HostName
+	a.PrivateIP = PrivateIP
+	a.TimeUnix = AtomicClockUnix
+	a.AllConn = c.AllConn
+	a.Established = c.Established
+	jsonData, _ := json.Marshal(a)
+	messageChan.TcpNetInfo <- jsonData
 }
