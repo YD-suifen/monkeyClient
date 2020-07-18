@@ -28,3 +28,18 @@ func HostInfoGet(c *gin.Context)  {
 	}
 	
 }
+
+type chanInfo struct {
+	Name string
+	Count int
+}
+func ChanLen(c *gin.Context)  {
+	name := c.Query("name")
+
+	var a chanInfo
+	b := messageChan.GetChanLen(name)
+	a.Name = name
+	a.Count = b
+	data, _ := json.Marshal(a)
+	fmt.Println(string(data))
+}

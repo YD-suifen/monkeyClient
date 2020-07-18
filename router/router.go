@@ -10,5 +10,6 @@ func RegistRouter(r *gin.Engine)  {
 
 	r.GET("/jiange",server.Jiange)
 	r.GET("/hostagent",server.HostInfoGet)
+	r.POST("/chaninfo",server.ChanLen)
 
 }

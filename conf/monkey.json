@@ -2,7 +2,7 @@
 {
   "master" : "127.0.0.1",
   "port" : 9527,
-  "dbHost":"127.0.0.1",
+  "dbHost":"172.16.204.173",
   "dbUser": "devops",
   "dbName": "suifengapi",
   "dbPass": "CXbjol2Jah5FkcUB"

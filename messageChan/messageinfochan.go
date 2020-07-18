@@ -16,3 +16,19 @@ func init()  {
 	DiskInfo = make(chan []byte, 10)
 	TcpNetInfo = make(chan []byte, 10)
 }
+
+func GetChanLen(chanName string) int {
+	switch chanName {
+	case "HostNowData":
+		return len(HostNowData)
+	case "CpuInfo":
+		return len(CpuInfo)
+	case "MemInfo":
+		return len(MemInfo)
+	case "DiskInfo":
+		return len(DiskInfo)
+	case "TcpNetInfo":
+		return len(TcpNetInfo)
+	}
+	return 0
+}

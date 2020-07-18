@@ -23,7 +23,6 @@ func Init()  {
 
 
 func ColleData()  {
-	//bbb := logUtils.SugarLogger
 	Init()
 
 	var Host HostInfo

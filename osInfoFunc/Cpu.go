@@ -50,7 +50,10 @@ func (c *SecondData) Update() {
 }
 
 func readProc() (float64,float64) {
-	file, _ := os.Open(procFile.ReadProc("cpu"))
+	file, err := os.Open(procFile.ReadProc("cpu"))
+	if err != nil{
+		logUtils.Errorf("GetCpu readProc error=%v",err)
+	}
 	defer file.Close()
 
 	r := bufio.NewReader(file)
