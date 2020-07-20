@@ -8,6 +8,7 @@ import (
 
 type Configs struct{
 	Master string `json:"master"`
+	KeyName string `json:"keyName"`
 	Port int `json:"port"`
 	DbHost string `json:"dbHost"`
 	DbUser string `json:"dbUser"`

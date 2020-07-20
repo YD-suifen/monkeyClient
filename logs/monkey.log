@@ -13,3 +13,21 @@
 2020-07-15T17:40:46.101+0800	INFO	logUtils/logs.go:15	get hostname start
 2020-07-15T17:40:46.101+0800	INFO	logUtils/logs.go:15	get ip start
 2020-07-15T17:40:46.101+0800	INFO	logUtils/logs.go:15	GetCpu start
+2020-07-18T17:59:34.215+0800	INFO	monkeyClient/monkeyClient.go:37	log init ok
+2020-07-18T17:59:34.217+0800	INFO	monkeyClient/monkeyClient.go:46	config init ok
+2020-07-18T17:59:34.217+0800	INFO	monkeyClient/monkeyClient.go:51	host ColleData start
+2020-07-18T17:59:34.217+0800	INFO	logUtils/logs.go:15	Insert start
+2020-07-18T17:59:34.217+0800	INFO	logUtils/logs.go:15	get ip start
+2020-07-18T17:59:34.218+0800	INFO	logUtils/logs.go:15	get hostname start
+2020-07-18T17:59:34.218+0800	INFO	logUtils/logs.go:12	Host.Update time= 1595066340
+2020-07-18T17:59:34.218+0800	INFO	logUtils/logs.go:15	GetCpu start
+2020-07-18T17:59:34.218+0800	ERROR	logUtils/logs.go:26	GetCpu readProc error=open /proc/stat: no such file or directory
+2020-07-18T18:00:03.043+0800	INFO	monkeyClient/monkeyClient.go:37	log init ok
+2020-07-18T18:00:03.045+0800	INFO	monkeyClient/monkeyClient.go:46	config init ok
+2020-07-18T18:00:03.045+0800	INFO	monkeyClient/monkeyClient.go:51	host ColleData start
+2020-07-18T18:00:03.045+0800	INFO	logUtils/logs.go:15	Insert start
+2020-07-18T18:00:03.045+0800	INFO	logUtils/logs.go:15	get ip start
+2020-07-18T18:00:03.045+0800	INFO	logUtils/logs.go:15	get hostname start
+2020-07-18T18:00:03.046+0800	INFO	logUtils/logs.go:12	Host.Update time= 1595066400
+2020-07-18T18:00:03.046+0800	INFO	logUtils/logs.go:15	GetCpu start
+2020-07-18T18:00:03.046+0800	ERROR	logUtils/logs.go:26	GetCpu readProc error=open /proc/stat: no such file or directory

@@ -54,6 +54,7 @@ func GetDisk() []osDisk {
 	c.PrivateIP = PrivateIP
 	c.TimeUnix = AtomicClockUnix
 	c.Disk = string(jsonData)
+	c.KeyName = HostKeyName
 	jsonDataC, _ := json.Marshal(c)
 
 	messageChan.DiskInfo <- jsonDataC

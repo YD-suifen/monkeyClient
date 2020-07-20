@@ -1,6 +1,7 @@
 
 {
   "master" : "127.0.0.1",
+  "keyName": "jiange",
   "port" : 9527,
   "dbHost":"172.16.204.173",
   "dbUser": "devops",

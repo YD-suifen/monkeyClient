@@ -69,6 +69,7 @@ func (c *osNetConn) Get()  {
 	a.TimeUnix = AtomicClockUnix
 	a.AllConn = c.AllConn
 	a.Established = c.Established
+	a.KeyName = HostKeyName
 	jsonData, _ := json.Marshal(a)
 	messageChan.TcpNetInfo <- jsonData
 }

@@ -11,6 +11,7 @@ import (
 var AtomicClockUnix int64
 var HostName string
 var PrivateIP string
+var HostKeyName string
 
 func Init()  {
 	AtomicClockUnix = time.Now().Unix()
@@ -22,7 +23,9 @@ func Init()  {
 
 
 
-func ColleData()  {
+func ColleData(name string)  {
+
+	HostKeyName = name
 	Init()
 
 	var Host HostInfo

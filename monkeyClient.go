@@ -46,10 +46,10 @@ func main() {
 	logUtils.SugarLogger.Info("config init ok")
 
 
-	fmt.Println("aaa",utils.Config.Master,utils.Config.Port)
+	fmt.Println("aaa",utils.Config.Master,utils.Config.Port,utils.Config.KeyName)
 
 	logUtils.SugarLogger.Info("host ColleData start")
-	go osInfoFunc.ColleData()
+	go osInfoFunc.ColleData(utils.Config.KeyName)
 
 	server.SdataDBInsert()
 

@@ -35,6 +35,7 @@ func GetCpu() osCpu {
 	c.HostName = HostName
 	c.PrivateIP = PrivateIP
 	c.TimeUnix = AtomicClockUnix
+	c.KeyName = HostKeyName
 	jsonData, _ := json.Marshal(c)
 	messageChan.CpuInfo <- jsonData
 	return b

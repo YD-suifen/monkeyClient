@@ -59,6 +59,7 @@ func (c *osMem) Get()  {
 	a.Used = c.Used
 	a.Total = c.Total
 	a.Free = c.Free
+	a.KeyName = HostKeyName
 	jsonData, _ := json.Marshal(a)
 	messageChan.MemInfo <- jsonData
 
