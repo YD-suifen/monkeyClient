@@ -23,7 +23,7 @@ type SecondData struct {
 }
 
 func GetCpu() osCpu {
-	logUtils.Info("GetCpu start")
+	logUtils.Info(" GetCpu start")
 	var a SecondData
 	var b osCpu
 	var c dao.SHCpuTable

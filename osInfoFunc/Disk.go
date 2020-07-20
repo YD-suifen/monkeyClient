@@ -46,7 +46,7 @@ func GetDisk() []osDisk {
 		diskInfos.Free = float64(data.PFree)
 
 		diskInfosList = append(diskInfosList,diskInfos)
-		logUtils.Debugf("%v %v %v %v ",data.DevName,data.PTotel,data.PUsed,data.PFree)
+		logUtils.Debugf(" %v %v %v %v ",data.DevName,data.PTotel,data.PUsed,data.PFree)
 
 	}
 	jsonData, _ := json.Marshal(diskInfosList)

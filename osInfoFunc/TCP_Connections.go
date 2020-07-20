@@ -35,7 +35,7 @@ func GetTcpNet() osNetConn {
 func (c *osNetConn) Get()  {
 	contents, err := ioutil.ReadFile(procFile.ReadProc("netconn"))
 	if err != nil {
-		logUtils.Errorf("osNetConn read file err= %v",err)
+		logUtils.Errorf(" osNetConn read file err= %v",err)
 		return
 	}
 	read := bufio.NewReader(bytes.NewBuffer(contents))

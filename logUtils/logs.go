@@ -46,6 +46,6 @@ func getEncoder() zapcore.Encoder {
 }
 
 func getLogWriter() zapcore.WriteSyncer {
-	file, _ := os.OpenFile("./logs/monkey.log",os.O_CREATE|os.O_APPEND|os.O_RDWR, 0744)
+	file, _ := os.OpenFile(" ./logs/monkey.log",os.O_CREATE|os.O_APPEND|os.O_RDWR, 0744)
 	return zapcore.AddSync(file)
 }

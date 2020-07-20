@@ -84,7 +84,7 @@ func insertTcpNet() {
 			var data SHTcpNetTable
 			_ = json.Unmarshal(jsonData,&data)
 			db := utils.SqlxCli()
-			sql := fmt.Sprintf("insert into monkey_s_tcpnetdata (hostName,keyName,privateIp,allConn,established,timeUnix) value ('%v','%v','%v',%v,%v,%v)",data.HostName,data.KeyName,data.PrivateIP,data.AllConn,data.Established,data.TimeUnix)
+			sql := fmt.Sprintf("insert  into monkey_s_tcpnetdata (hostName,keyName,privateIp,allConn,established,timeUnix) value ('%v','%v','%v',%v,%v,%v)",data.HostName,data.KeyName,data.PrivateIP,data.AllConn,data.Established,data.TimeUnix)
 
 			if _, err := db.Exec(sql); err != nil {
 				logUtils.Errorf("InsertTcpNet time=%v,error=%v",data.TimeUnix,err)

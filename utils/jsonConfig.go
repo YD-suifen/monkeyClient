@@ -39,7 +39,7 @@ var Config Configs
 
 func InitRedisConfigs(conf string) {
 
-	fmt.Println("path",conf)
+	fmt.Println("path ",conf)
 
 	JsonParse := NewJsonStruct()
 	JsonParse.Load(conf, &Config)

@@ -28,6 +28,7 @@ func GetChanLen(chanName string) int {
 	case "DiskInfo":
 		return len(DiskInfo)
 	case "TcpNetInfo":
+
 		return len(TcpNetInfo)
 	}
 	return 0
